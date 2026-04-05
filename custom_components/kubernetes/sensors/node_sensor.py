@@ -51,6 +51,10 @@ class NodeSensor(KubernetesEntity, SensorEntity):
         super().__init__(hub, data, ENTITY_ID_FORMAT)
 
     @property
+    def extra_state_attributes(self) -> dict:
+        return {}
+
+    @property
     def state(self) -> str:
         if self.getData().spec.unschedulable:
             return STATE_UNSCHEDULABLE
